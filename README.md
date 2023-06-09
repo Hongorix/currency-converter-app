@@ -8,6 +8,8 @@ Clone this repository and run `npm install`.
 
 Simple app that shows currency exchange rate, created with angular. 
 
+Currency exchange rates are taken from [API Ninjas](https://api-ninjas.com/api/convertcurrency)
+
 Preview:
 
 ![Project preview](https://i.imgur.com/3gtUnMZ.gif)
