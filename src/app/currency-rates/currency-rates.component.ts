@@ -27,7 +27,7 @@ export class CurrencyRatesComponent implements OnInit {
       },
       error: (error) => {
         console.log('Произошла ошибка при получении курсов валют:', error);
-      }
+      },
     });
   }
 }

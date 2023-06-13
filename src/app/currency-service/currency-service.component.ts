@@ -8,7 +8,7 @@ interface CurrencyConversionResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrencyService {
   constructor(private http: HttpClient) {}
@@ -19,15 +19,19 @@ export class CurrencyService {
     const rates: { [key: string]: number } = {};
 
     const requests = currencies.map((currency) =>
-      this.http.get<CurrencyConversionResponse>(`${url}?have=${currency}&want=UAH&amount=1`).pipe(
-        map((response) => {
-          if (response) {
-            return response;
-          } else {
-            throw new Error(`Response is undefined for ${currency}`);
-          }
-        })
-      )
+      this.http
+        .get<CurrencyConversionResponse>(
+          `${url}?have=${currency}&want=UAH&amount=1`
+        )
+        .pipe(
+          map((response) => {
+            if (response) {
+              return response;
+            } else {
+              throw new Error(`Response is undefined for ${currency}`);
+            }
+          })
+        )
     );
 
     return forkJoin(requests).pipe(
@@ -41,8 +45,14 @@ export class CurrencyService {
     );
   }
 
-  convertCurrency(haveCurrency: string, wantCurrency: string, amount: number): Observable<number> {
+  convertCurrency(
+    haveCurrency: string,
+    wantCurrency: string,
+    amount: number
+  ): Observable<number> {
     const url = `https://api.api-ninjas.com/v1/convertcurrency?have=${haveCurrency}&want=${wantCurrency}&amount=${amount}`;
-    return this.http.get<CurrencyConversionResponse>(url).pipe(map((response) => response.new_amount));
+    return this.http
+      .get<CurrencyConversionResponse>(url)
+      .pipe(map((response) => response.new_amount));
   }
 }

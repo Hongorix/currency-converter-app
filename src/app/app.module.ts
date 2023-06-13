@@ -8,9 +8,13 @@ import { CurrencyInputComponent } from './currency-input/currency-input.componen
 import { CurrencyRatesComponent } from './currency-rates/currency-rates.component';
 
 @NgModule({
-  declarations: [CurrencyConverterComponent, CurrencyInputComponent, CurrencyRatesComponent],
+  declarations: [
+    CurrencyConverterComponent,
+    CurrencyInputComponent,
+    CurrencyRatesComponent,
+  ],
   imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [CurrencyConverterComponent]
+  bootstrap: [CurrencyConverterComponent],
 })
 export class AppModule {}

@@ -8,9 +8,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CurrencyInputComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CurrencyInputComponent implements ControlValueAccessor {
   value = 0;
@@ -26,7 +26,9 @@ export class CurrencyInputComponent implements ControlValueAccessor {
     }
   }
 
-  registerOnChange(fn: (value: { amount: number; currency: string }) => void): void {
+  registerOnChange(
+    fn: (value: { amount: number; currency: string }) => void
+  ): void {
     this.onChange = fn;
   }
 
